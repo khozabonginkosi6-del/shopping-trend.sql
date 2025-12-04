@@ -1,115 +1,55 @@
-📘 Advanced SQL on NULL Functions
-📌 Overview
-This project demonstrates advanced SQL techniques for handling NULL values in retail shopping trend data. The queries showcase:
+# 📘 Advanced SQL on NULL Functions
 
-Filtering missing values
+## 📌 Summary of the Case Study
+This case study demonstrates how advanced SQL techniques can be applied to handle **NULL values** in retail shopping trend data. The project focused on filtering missing values, replacing NULLs with defaults, classifying records using CASE statements, and performing aggregations with conditions. The goal was to transform incomplete raw data into **business insights** such as customer segmentation, purchase behavior, and review analysis.
 
-Replacing NULLs with defaults using IFNULL
+---
 
-Classifying records with CASE
+## 🔍 How the Case Study Was Done
+1. **Dataset Exploration**
+   - Source: `MYDATABASE.PUBLIC.SHOPING_TREND_01`
+   - Example columns: `customer_id`, `size`, `purchase_amount`, `item_purchased`, `season`, `payment_method`, `promo_code_used`, `review_rating`, `shipping_type`, `location`, `color`, `previous_purchases`, `frequency_of_purchases`, `category`, `age`, `gender`.
 
-Aggregating and grouping with conditions
+2. **Query Development**
+   - Designed **20 targeted SQL queries** to address specific business questions.
+   - Examples include:
+     - Customers with missing size but purchase amount > 50.
+     - Purchases grouped by season, replacing NULLs with "Unknown Season".
+     - Payment method counts with NULLs treated as "Not Provided".
+     - Classification of spenders (High, Medium, Low) using CASE + IFNULL.
+     - Top 5 locations by purchase amount, replacing NULLs with 0.
+     - Average review ratings per category, handling NULLs and filtering > 3.5.
 
-Business insights such as customer segmentation, purchase behavior, and review analysis
+3. **NULL Handling Techniques**
+   - **IFNULL / COALESCE** → Replace missing values with defaults.
+   - **CASE WHEN** → Classify records and handle conditional logic.
+   - **Aggregations** → SUM, AVG, COUNT with conditions to exclude or include NULLs.
+   - **Filtering** → Queries designed to highlight missing or incomplete data.
 
-🛠️ Requirements
-SQL-compatible database (Snowflake, BigQuery, PostgreSQL, MySQL, SQL Server, Oracle, etc.)
+---
 
-Dataset:
+## 📊 Insights Found
+- Customers with missing attributes (e.g., size, promo codes) still contributed significantly to sales.  
+- Seasonal grouping revealed that **NULL seasons** represented a notable portion of transactions, requiring classification as "Unknown Season".  
+- Payment method analysis showed gaps where customers did not provide details, highlighting areas for improved data capture.  
+- **Spender classification** identified high-value customers even when purchase amounts were partially missing.  
+- Location-based analysis revealed **top-performing regions**, while NULL handling ensured accurate revenue calculations.  
+- Review ratings analysis showed that handling NULLs was critical to avoid skewed averages and to identify categories with strong customer satisfaction.  
 
-Code
-MYDATABASE.PUBLIC.SHOPING_TREND_01
-Example columns:
+---
 
-customer_id
+## 🎯 Summary of Findings
+By systematically handling NULL values, the project transformed incomplete retail data into **reliable insights**. The analysis uncovered:  
+- Customer behavior patterns despite missing attributes.  
+- Seasonal and regional sales trends.  
+- Payment and promo code usage gaps.  
+- Correlations between spending, reviews, and purchase frequency.  
 
-size
+This demonstrates how **advanced SQL functions** can improve data quality and deliver **business intelligence** that supports decision-making in **marketing, customer engagement, and inventory management**.
 
-purchase_amount
+---
 
-item_purchased
-
-season
-
-payment_method
-
-promo_code_used
-
-review_rating
-
-shipping_type
-
-location
-
-color
-
-previous_purchases
-
-frequency_of_purchases
-
-category
-
-age
-
-gender
-
-📂 Queries
-1. 🔎 Missing Size & Purchase > 50
-Find customers with missing size but purchase amount greater than 50.
-
-2. 📅 Purchases by Season (NULL → Unknown)
-Group purchases by season, replacing NULLs with 'Unknown Season'.
-
-3. 💳 Customers by Payment Method (NULL → Not Provided)
-Count customers by payment method, treating NULLs as 'Not Provided'.
-
-4. 🎟️ Missing Promo Code & Low Rating
-Show customers with no promo code and review rating below 3.0.
-
-5. 🚚 Average Purchase by Shipping Type (NULL → 0)
-Group by shipping type and calculate average purchase amount, replacing NULLs with 0.
-
-6. 📍 Purchases per Location (>5, Non-NULL Payment)
-Show locations with more than 5 purchases and valid payment methods.
-
-7. 💵 Spender Category (CASE + NULL Handling)
-Classify customers as High, Medium, Low spenders using CASE and IFNULL.
-
-8. 🎨 Customers with Color Not NULL & Previous Purchases NULL
-Find customers with missing previous purchases but valid color.
-
-9. 🔄 Group by Frequency of Purchases
-Group records by frequency of purchases.
-
-10. 🛍️ Purchases per Category (Exclude NULL)
-Count purchases per category, excluding NULL categories.
-
-11. 📍 Top 5 Locations by Purchase Amount
-Return top 5 locations with highest purchase amounts, replacing NULLs with 0.
-
-12. 🚻 Entries with NULL Color by Gender & Size
-Group customers by gender and size, counting entries with NULL color.
-
-13. 📦 Items with >3 NULL Shipping Type
-Identify items purchased more than 3 times with NULL shipping type.
-
-14. 💳 Payment Method with NULL Review Rating
-Count customers per payment method with missing review ratings.
-
-15. ⭐ Average Review Rating per Category (>3.5)
-Group by category, calculate average review rating (NULL → 0), filter >3.5.
-
-16. 🎨 Colors Missing in ≥2 Rows + Avg Age
-List colors missing in at least 2 rows and average age of those customers.
-
-17. 🚚 Delivery Speed Classification
-Classify delivery speed as Fast, Slow, Other using CASE.
-
-18. 🎟️ Promo Code = Yes & Purchase Amount NULL
-Find customers with NULL purchase amount but promo code used = Yes.
-
-19. 📍 Max Previous Purchases per Location (Avg Rating > 4.0)
-Group by location, show max previous purchases (NULL → 0), filter avg rating > 4.0.
-
-20. 🚚 NULL Shipping Type + Purchase Between 30–70
-Find customers with NULL shipping type and purchase amount between 30–70.
+## 🛠️ Tools Used
+- **SQL-compatible databases** (Snowflake, BigQuery, PostgreSQL, MySQL, SQL Server, Oracle)  
+- **T-SQL / SQL functions** (IFNULL, COALESCE, CASE, SUM, AVG, COUNT, GROUP BY)  
+- **Optional Visualization Tools**: Power BI, Excel (pivot 
